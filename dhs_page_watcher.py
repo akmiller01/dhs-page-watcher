@@ -94,11 +94,7 @@ def send_email(subject, message):
 
 
 def main():
-    try:
-        raw_content = fetch_data()
-    except Exception as e:
-        print("Encountered an error fetching data...")
-        send_email("DHS page fetch has failed", "<p>Error message: "+str(e)+"</p>")
+    raw_content = fetch_data()
     its_the_same, old_raw_content = data_is_the_same(raw_content)
     if not its_the_same:
         changes_old, changes_new = get_diff(raw_content_to_table(old_raw_content), raw_content_to_table(raw_content))
